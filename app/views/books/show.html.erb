@@ -53,7 +53,7 @@
                 <%= link_to "Edit", edit_book_url(@book.id), class: "btn btn-sm btn-success" %>
               </td>
               <td>
-                <%= link_to "Destroy", book_path, class: "btn btn-sm btn-danger" %>
+                <%= link_to "Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
               </td>
             </tr>
           </tbody>
