@@ -1,1 +1,27 @@
-<%= render 'book', books: @books %>
+<main>
+    <p id="notice"></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+                <h1>User info</h1>
+                <div class="form-group">
+                  <%= form_with model: @user do |f| %>
+                    <label for="user_name">Name</label><br>
+                    <%= f.text_field :name, autofocus: true, id:"user_name", class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <label for="user_image">Image</label><br>
+                  <%= f.file_field :image, accept: "image/*" %>
+                </div>
+                <div class="form-group">
+                    <label for="user_self_introduction">Introduction</label><br>
+                    <%= f.text_field :self_introduction, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                    <%= f.submit "Update user", class: "btn btn-secondary" %>
+                </div>
+                  <% end %>
+            </div>
+        </div>
+    </div>
+</main>
