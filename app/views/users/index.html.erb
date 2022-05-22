@@ -1,23 +1,20 @@
 
 <main>
+  
   <div class="container px5 px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
         <h2>User info</h2>
-        <% if @user.image.attached? %>
-          <%= image_tag user.image, size: "100x100" %>
-        <% else %>
-          <%= image_tag 'no_image', size: "100x100" %>
-        <% end %>
+          <%= image_tag @user.get_profile_image(100,100) %>
         <table class="table">
           <tbody>
             <tr>
 	            <th>name</th>
-	            <th><%= current_user.name %></th>  <!-- ここのname部分をcurrent_userになるようにしないといけない !-->
+	            <th><%= @user.name %></th>  <!-- ここのname部分をcurrent_userになるようにしないといけない !-->
             </tr>
             <tr>
 	            <th>introduction</th>
-	            <th><%= current_user.self_introduction %></th>       <!-- ここもnameと同view様、current_userのintroductionになるようにしないと　!-->
+	            <th><%= @user.self_introduction %></th>       <!-- ここもnameと同view様、current_userのintroductionになるようにしないと　!-->
             </tr>
           </tbody>
         </table>
@@ -48,14 +45,25 @@
         <table class="table table-hover table-inverse">
           <thead>
             <tr>
-              <th></th>
               <th>image</th>
               <th>name</th>
               <th colspan="3"></th>
             </tr>
           </thead>
           <tbody>
-
+            <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= image_tag @user.get_profile_image(100,100) %>
+              </td>
+              <td>
+                <%= user.name %>
+              </td>
+              <td>
+                <%= link_to "Show", user_path(user.id) %>
+              </td>
+            </tr>
+           <% end %>
           </tbody>
         </table>
       </div>

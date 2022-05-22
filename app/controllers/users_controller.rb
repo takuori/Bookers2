@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
-    @user = User.new
     @users = User.all
+    @user = current_user
   end
 
   def edit
@@ -10,12 +10,18 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @books = Book.all
+    flash.now[:notice] = "Welcome! You have signed up successfully."
   end
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
+    flash.now[:notice] = "You have updated user successfully."
   end
 
   private

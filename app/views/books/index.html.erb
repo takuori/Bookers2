@@ -1,4 +1,13 @@
 <main>
+  <% if @book.errors.any? %>
+    <%= @book.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div class="container px5 px-5 px-sm-0">
     <div class="row">
       <div class="col-md-3">
@@ -55,10 +64,14 @@
             <% @books.each do |book| %>
             <tr>
               <td>
-              
+                <%= link_to users_path(book.user.id) do %>
+                  <%= image_tag book.user.get_profile_image(100, 100) %>
+                <% end %>
               </td>
               <td>
-                <%= link_to "@book.name", book_path(book.id) %>
+                <%= link_to book_path(book.id) do %>
+                  <%= book.title %>
+                <% end %>
               </td>
               <td>
                 <%= book.body %>
