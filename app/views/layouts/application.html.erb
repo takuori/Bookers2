@@ -36,7 +36,7 @@
               </li>
               <li class="nav-link text-light">
                 <i class="fa fa-sign-out-alt fa-w-16"></i>
-                <%= link_to "Log out", destroy_user_session_path, class: 'text-light' %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'text-light' %>
               </li>
               <% else %>
               <li class="nav-link text-light">
@@ -58,11 +58,13 @@
         </div>
       </nav>
     </header>
+      <% flash.each do |key, value| %>
+       <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
     <main>
+      <%= yield %>
     </main>
   </body>
-
-  <%= yield %>
   <footer>
     <div class="container mt-5">
       <div class="row">

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_one_attached :image
 
   validates :name, presence: true
-  validates :self_introduction, presence: true
+  
 
 
   def get_profile_image(width, height)
