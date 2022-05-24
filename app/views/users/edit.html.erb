@@ -19,14 +19,14 @@
                 </div>
                 <div class="form-group">
                   <label for="user_image">Image</label><br>
-                  <%= f.file_field :image, accept: "image/*" %>
+                  <%= f.file_field :profile_image, accept: "image/*" %>
                 </div>
                 <div class="form-group">
-                    <label for="user_self_introduction">Introduction</label><br>
-                    <%= f.text_field :self_introduction, class: "form-control" %>
+                    <label for="user_introduction">Introduction</label><br>
+                    <%= f.text_field :introduction, class: "form-control" %>
                 </div>
                 <div class="form-group">
-                    <%= f.submit "Update user", class: "btn btn-secondary" %>
+                    <%= f.submit "Update User", class: "btn btn-secondary" %>
                 </div>
                   <% end %>
             </div>
