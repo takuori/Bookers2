@@ -96,7 +96,6 @@ describe '[STEP2] ユーザログイン後のテスト' do
       end
 
       it '自分の新しい投稿が正しく保存される' do
-        byebug
         expect { click_button 'Create Book' }.to change(user.books, :count).by(1)
       end
       it 'リダイレクト先が、保存できた投稿の詳細画面になっている' do
